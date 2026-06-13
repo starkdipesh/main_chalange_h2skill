@@ -102,7 +102,7 @@ export default function ChatPanel({ analysis }) {
         <span className="status-indicator">🟢 Online</span>
       </div>
 
-      <div className="chat-messages">
+      <div className="chat-messages" role="log" aria-live="polite" aria-label="Conversation history">
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -142,8 +142,10 @@ export default function ChatPanel({ analysis }) {
           onKeyPress={handleKeyPress}
           disabled={loading}
           rows="3"
+          aria-label="Chat message input"
         />
         <button
+          type="button"
           className="btn-send"
           onClick={handleSendMessage}
           disabled={loading || inputMessage.trim().length === 0}

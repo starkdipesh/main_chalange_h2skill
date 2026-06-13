@@ -77,8 +77,13 @@ export default function DailyLogPanel({ onAnalysis }) {
           value={journalText}
           onChange={(e) => setJournalText(e.target.value)}
           disabled={loading}
+          aria-label="Journal entry"
+          aria-describedby="journal-help"
         />
       </div>
+      <p id="journal-help" className="sr-only">
+        Type your exam preparation feelings, stress points, and mood details here.
+      </p>
 
       {/* Mood Slider */}
       <div className="mood-section">
@@ -95,6 +100,10 @@ export default function DailyLogPanel({ onAnalysis }) {
             onChange={(e) => setMood(e.target.value)}
             className="mood-slider"
             disabled={loading}
+            aria-label="Mood slider"
+            aria-valuemin="1"
+            aria-valuemax="10"
+            aria-valuenow={mood}
           />
           <span className="mood-label mood-label-high">🌟</span>
         </div>
@@ -128,7 +137,7 @@ export default function DailyLogPanel({ onAnalysis }) {
 
       {/* Analysis Results */}
       {analysis && (
-        <div className="analysis-results">
+        <div className="analysis-results" role="status" aria-live="polite">
           <h3>✨ AI Wellness Insights</h3>
 
           {/* Burnout Meter */}
