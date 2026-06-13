@@ -1,7 +1,26 @@
 [build]
-  command = "cd frontend && npm install && npm run build"
-  publish = "frontend/dist"
+  base = "frontend"
+  command = "npm install && npm run build"
+  publish = "dist"
   functions = "netlify/functions"
 
 [dev]
   functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/journal"
+  to = "/.netlify/functions/journal"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/health"
+  status = 200
+  force = true
