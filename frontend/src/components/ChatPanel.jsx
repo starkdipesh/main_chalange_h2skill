@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import './ChatPanel.css';
 
-export default function ChatPanel() {
+export default function ChatPanel({ analysis }) {
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -46,6 +46,10 @@ export default function ChatPanel() {
         },
         body: JSON.stringify({
           message: inputMessage,
+          context: {
+            mood: analysis?.mood,
+            hiddenTriggers: analysis?.hiddenTriggers,
+          },
         }),
       });
 

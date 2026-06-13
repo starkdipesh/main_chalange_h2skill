@@ -5,6 +5,7 @@ import './App.css';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [currentAnalysis, setCurrentAnalysis] = useState(null);
 
   useEffect(() => {
     // Verify backend connection on load
@@ -39,8 +40,8 @@ function App() {
 
       <main className="app-main">
         <div className="dashboard-grid">
-          <DailyLogPanel />
-          <ChatPanel />
+          <DailyLogPanel onAnalysis={setCurrentAnalysis} />
+          <ChatPanel analysis={currentAnalysis} />
         </div>
       </main>
 

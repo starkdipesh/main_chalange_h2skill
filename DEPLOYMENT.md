@@ -202,6 +202,10 @@ heroku logs --tail
 3. **Add Environment Variables**
    - Settings → Build & Deploy → Environment
    - Add any env vars needed
+   - Add production secrets like:
+     - `GEMINI_API_KEY`
+     - `GEMINI_MODEL` (optional)
+   - The backend is implemented as Netlify Functions under `netlify/functions`, so no separate backend deploy is needed.
 
 4. **Deploy**
    - Automatic on push to main branch

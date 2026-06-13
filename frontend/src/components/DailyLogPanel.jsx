@@ -3,7 +3,7 @@ import BurnoutMeter from './BurnoutMeter';
 import StressTriggers from './StressTriggers';
 import './DailyLogPanel.css';
 
-export default function DailyLogPanel() {
+export default function DailyLogPanel({ onAnalysis }) {
   const [journalText, setJournalText] = useState('');
   const [mood, setMood] = useState(5);
   const [loading, setLoading] = useState(false);
@@ -33,6 +33,9 @@ export default function DailyLogPanel() {
 
       const data = await response.json();
       setAnalysis(data.analysis);
+      if (typeof onAnalysis === 'function') {
+        onAnalysis(data.analysis);
+      }
     } catch (err) {
       setError(err.message);
       console.error('Analysis error:', err);
